@@ -99,7 +99,7 @@
         <input type="number" v-model.number.trim="input1" />
 
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
-            <el-form-item
+            <!-- <el-form-item
                 prop="email"
                 label="邮箱"
                 :rules="[
@@ -108,7 +108,7 @@
                 ]"
             >
                 <el-input v-model="dynamicValidateForm.email"></el-input>
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item
                 v-for="(domain, index) in dynamicValidateForm.domains"
                 :key="domain.key"
@@ -120,11 +120,11 @@
                     <el-button @click.prevent="removeDomain(domain)">删除</el-button>
                 </el-form-item>
 
-                <el-form-item :label="'date1' + index" :prop="'domains.' + index + '.date1'" :rules="custormRulesDate" style="margin-top: 10px;">
+                <!-- <el-form-item :label="'date1' + index" :prop="'domains.' + index + '.date1'" :rules="custormRulesDate" style="margin-top: 10px;">
                     {{'domains.' + index + '.date1'}}
                     <el-input v-model.number="domain.date1"></el-input>
                     <el-button @click.prevent="removeDomain(domain)">删除</el-button>
-                </el-form-item>
+                </el-form-item> -->
 
             </el-form-item>
             <el-form-item>
@@ -210,10 +210,6 @@ export default {
             },
             dynamicValidateForm: {
                 domains: [
-                    {
-                        value: '',
-                        date1: '',
-                    },
                     {
                         value: '',
                         date1: '',
@@ -317,27 +313,40 @@ export default {
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    // alert('submit!');
-                    console.log(111);
+                    console.log('submit');
                 } else {
                     console.log('error submit!!');
                     return false;
                 }
             });
         },
-        submitForm1(formName) {
-            this.$refs[formName].validate((valid) => {
-                if (valid) {
-                    // alert('submit!');
-                    console.log('通过了');
-                } else {
-                    console.log('error submit!!');
-                    return false;
-                }
+        submitForm1() {
+            return new Promise((res, rej) => {
+                this.$refs['dynamicValidateForm'].validate((valid) => {
+                    if (valid) {
+                        res(11);
+                    } else {
+                        rej();
+                    }
+                });
             });
         },
-        resetForm1(formName) {
-            this.$refs[formName].resetFields();
+        async resetForm1(formName) {
+            // this.$refs[formName].resetFields();
+
+            // this.submitForm1().then(res => {
+            //     console.log(res);
+            // }).catch(err => {
+            //     console.log(err);
+            // });
+
+            try {
+                let result = await this.submitForm1();
+                console.log(result);
+            } catch {
+                console.log('代码catch了');
+            }
+            
         },
         removeDomain(item) {
             var index = this.dynamicValidateForm.domains.indexOf(item);
