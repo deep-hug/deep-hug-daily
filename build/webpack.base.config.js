@@ -68,7 +68,8 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                include: path.resolve(__dirname, 'src') // 精确指定要处理的目录
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
