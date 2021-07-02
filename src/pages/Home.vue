@@ -14,14 +14,22 @@
             <h3>计数器</h3>
             <p>当前数字是:{{ num }}</p>
             <p>转换后的数字是:{{ numAdd1 }}</p>
-            <el-button type="primary" @click="numIncrement(1)" plain>点我加1</el-button>
-            <el-button type="primary" @click="numIncrementAsync" plain>加我400毫秒后加3</el-button>
+            <el-button type="primary" @click="numIncrement(1)" plain
+                >点我加1</el-button
+            >
+            <el-button type="primary" @click="numIncrementAsync" plain
+                >加我400毫秒后加3</el-button
+            >
         </div>
         <div>
-            <el-button type="primary" @click="setStorage" plain>本地储存数据</el-button>
+            <el-button type="primary" @click="setStorage" plain
+                >本地储存数据</el-button
+            >
         </div>
         <div>
-            <el-button type="primary" @click="getAddressList" plain>请求接口数据</el-button>
+            <el-button type="primary" @click="getAddressList" plain
+                >请求接口数据</el-button
+            >
         </div>
         <div>
             <div v-for="(item, index) in addressList" :key="index">
@@ -29,7 +37,9 @@
             </div>
         </div>
         <div>
-            <el-button type="primary" @click="getMockData" plain>获取mock数据</el-button>
+            <el-button type="primary" @click="getMockData" plain
+                >获取mock数据</el-button
+            >
         </div>
         <div>
             <el-button type="primary" @click="login" plain>登录</el-button>
@@ -39,32 +49,50 @@
             <div>2</div>
         </div>
         <div>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form
+                :model="ruleForm"
+                :rules="rules"
+                ref="ruleForm"
+                label-width="100px"
+                class="demo-ruleForm"
+            >
                 <el-form-item label="活动名称" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                    <el-button type="primary" @click="submitForm('ruleForm')"
+                        >立即创建</el-button
+                    >
                     <el-button @click="resetForm('ruleForm')">重置</el-button>
                 </el-form-item>
             </el-form>
         </div>
 
-        <el-button type="text" @click="showDateChooseFlag = true">点击打开 Dialog</el-button>
-        <DateDialog :value="showDateChooseFlag" @closeDateChooseDialog="closeDateChooseDialog"></DateDialog>
+        <el-button type="text" @click="showDateChooseFlag = true"
+            >点击打开 Dialog</el-button
+        >
+        <DateDialog
+            :value="showDateChooseFlag"
+            @closeDateChooseDialog="closeDateChooseDialog"
+        ></DateDialog>
 
         <el-form ref="form" :model="form" label-width="80px">
             <el-form-item
                 label="活动时间"
                 prop="date1"
-                :rules="{ type: 'date', message: '请选择时间', trigger: 'change', required: true }"
+                :rules="{
+                    type: 'date',
+                    message: '请选择时间',
+                    trigger: 'change',
+                    required: true,
+                }"
             >
                 <el-col :span="11">
                     <el-date-picker
                         type="date"
                         placeholder="选择日期"
                         v-model="form.date1"
-                        style="width: 100%;"
+                        style="width: 100%"
                         :picker-options="pickerOptions1"
                     ></el-date-picker>
                 </el-col>
@@ -74,13 +102,15 @@
                         type="date"
                         placeholder="选择日期"
                         v-model="form.date2"
-                        style="width: 100%;"
+                        style="width: 100%"
                         :picker-options="pickerOptions2"
                     ></el-date-picker>
                 </el-col>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit('form')">立即创建</el-button>
+                <el-button type="primary" @click="onSubmit('form')"
+                    >立即创建</el-button
+                >
                 <el-button>取消</el-button>
             </el-form-item>
         </el-form>
@@ -91,14 +121,21 @@
             在进行diff算法的时候，首先会进行新旧节点的首尾交叉对比，如果匹配不到，会拿新节点的key于旧节点进行比较，进而找到旧节点
         </div>
 
-        <h2>new Vue实例中，data是一个对象，在vue组件中，data为什么是一个函数</h2>
+        <h2>
+            new Vue实例中，data是一个对象，在vue组件中，data为什么是一个函数
+        </h2>
         <div>
             因为组件是复用的，在js中对象是引用关系，如果组件的data是一个对象，那么子组件中的属性值会相互污染，产生副作用。
         </div>
 
         <input type="number" v-model.number.trim="input1" />
 
-        <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
+        <el-form
+            :model="dynamicValidateForm"
+            ref="dynamicValidateForm"
+            label-width="100px"
+            class="demo-dynamic"
+        >
             <!-- <el-form-item
                 prop="email"
                 label="邮箱"
@@ -113,11 +150,16 @@
                 v-for="(domain, index) in dynamicValidateForm.domains"
                 :key="domain.key"
             >
-
-                <el-form-item :label="'value' + index" :prop="'domains.' + index + '.value' " :rules="custormRules">
-                    {{'domains.' + index + '.value'}}
+                <el-form-item
+                    :label="'value' + index"
+                    :prop="'domains.' + index + '.value'"
+                    :rules="custormRules"
+                >
+                    {{ 'domains.' + index + '.value' }}
                     <el-input v-model.number="domain.value"></el-input>
-                    <el-button @click.prevent="removeDomain(domain)">删除</el-button>
+                    <el-button @click.prevent="removeDomain(domain)"
+                        >删除</el-button
+                    >
                 </el-form-item>
 
                 <!-- <el-form-item :label="'date1' + index" :prop="'domains.' + index + '.date1'" :rules="custormRulesDate" style="margin-top: 10px;">
@@ -125,12 +167,17 @@
                     <el-input v-model.number="domain.date1"></el-input>
                     <el-button @click.prevent="removeDomain(domain)">删除</el-button>
                 </el-form-item> -->
-
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="submitForm1('dynamicValidateForm')">提交</el-button>
+                <el-button
+                    type="primary"
+                    @click="submitForm1('dynamicValidateForm')"
+                    >提交</el-button
+                >
                 <el-button @click="addDomain">新增域名</el-button>
-                <el-button @click="resetForm1('dynamicValidateForm')">重置</el-button>
+                <el-button @click="resetForm1('dynamicValidateForm')"
+                    >重置</el-button
+                >
             </el-form-item>
         </el-form>
     </div>
@@ -143,7 +190,7 @@ import requestsTest from '@requests/requestsTest.js';
 import DateDialog from '../components/common/TestDialog.vue';
 export default {
     components: {
-        DateDialog,
+        DateDialog
     },
     data() {
         var checkAge = (rule, value, callback) => {
@@ -160,7 +207,7 @@ export default {
                 }
             }
         };
-        var checkDate =  (rule, value, callback) => {
+        var checkDate = (rule, value, callback) => {
             if (!value) {
                 return callback(new Error('年龄不能为空-111'));
             }
@@ -177,52 +224,54 @@ export default {
         return {
             addressList: [],
             ruleForm: {
-                name: '',
+                name: ''
             },
             rules: {
-                name: { validator: this.checkName, trigger: 'blur' },
+                name: { validator: this.checkName, trigger: 'blur' }
             },
             showDateChooseFlag: false,
             form: {
                 date1: '',
-                date2: '',
+                date2: ''
             },
             pickerOptions1: {
                 disabledDate(time) {
                     return time.getTime() > Date.now();
-                },
+                }
             },
             pickerOptions2: {
-                disabledDate: (time) => {
+                disabledDate: time => {
                     if (this.form.date1) {
-                        return new Date(this.form.date1).getTime() > time.getTime();
+                        return (
+                            new Date(this.form.date1).getTime() > time.getTime()
+                        );
                     }
-                },
+                }
             },
             input1: 0,
             custormRules: {
                 validator: checkAge,
-                trigger: 'blur',
+                trigger: 'blur'
             },
             custormRulesDate: {
                 validator: checkDate,
-                trigger: 'blur',
+                trigger: 'blur'
             },
             dynamicValidateForm: {
                 domains: [
                     {
                         value: '',
-                        date1: '',
-                    },
+                        date1: ''
+                    }
                 ],
-                email: '',
-            },
+                email: ''
+            }
         };
     },
     created() {},
     computed: {
         ...mapState('book', ['num']),
-        ...mapGetters('book', ['numAdd1']),
+        ...mapGetters('book', ['numAdd1'])
     },
     methods: {
         ...mapMutations('book', ['numIncrement']),
@@ -257,7 +306,7 @@ export default {
                 },
                 cancelFn: () => {
                     console.log('点击了取消');
-                },
+                }
             });
         },
         setStorage() {
@@ -267,25 +316,29 @@ export default {
             }, 500);
         },
         getAddressList() {
-            requestsTest.getAddressList({ page: 1, tab: 'good', limit: 20 }).then((res) => {
-                if (res && res.data && res.data.length) {
-                    console.log(res, '得到的列表');
-                    this.addressList = res.data;
-                }
-            });
+            requestsTest
+                .getAddressList({ page: 1, tab: 'good', limit: 20 })
+                .then(res => {
+                    if (res && res.data && res.data.length) {
+                        console.log(res, '得到的列表');
+                        this.addressList = res.data;
+                    }
+                });
         },
         getMockData() {
-            requestsTest.getMockData().then((res) => {
+            requestsTest.getMockData().then(res => {
                 console.log(res, 'mock数据');
             });
         },
         login() {
-            requestsTest.login({ account: 'sfy1', password: 'sfy12345' }).then((res) => {
-                console.log('登录成功------proxy（代理）成功');
-            });
+            requestsTest
+                .login({ account: 'sfy1', password: 'sfy12345' })
+                .then(res => {
+                    console.log('登录成功------proxy（代理）成功');
+                });
         },
         submitForm(formName) {
-            this.$refs[formName].validate((valid) => {
+            this.$refs[formName].validate(valid => {
                 if (valid) {
                     alert('submit!');
                 } else {
@@ -311,7 +364,7 @@ export default {
             this.showDateChooseFlag = false;
         },
         onSubmit(formName) {
-            this.$refs[formName].validate((valid) => {
+            this.$refs[formName].validate(valid => {
                 if (valid) {
                     console.log('submit');
                 } else {
@@ -322,7 +375,7 @@ export default {
         },
         submitForm1() {
             return new Promise((res, rej) => {
-                this.$refs['dynamicValidateForm'].validate((valid) => {
+                this.$refs['dynamicValidateForm'].validate(valid => {
                     if (valid) {
                         res(11);
                     } else {
@@ -346,7 +399,6 @@ export default {
             } catch {
                 console.log('代码catch了');
             }
-            
         },
         removeDomain(item) {
             var index = this.dynamicValidateForm.domains.indexOf(item);
@@ -357,10 +409,10 @@ export default {
         addDomain() {
             this.dynamicValidateForm.domains.push({
                 value: '',
-                key: Date.now(),
+                key: Date.now()
             });
-        },
-    },
+        }
+    }
 };
 </script>
 

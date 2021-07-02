@@ -1,0 +1,502 @@
+{
+    "editor.detectIndentation": true, // vscode默认启用了根据文件类型自动设置tabsize的选项
+    "editor.tabSize": 4, // 重新设定tabsize
+    //  #让函数(名)和后面的括号之间加个空格
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue"
+        ]
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/dist": true
+    },
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "vue": "html",
+        "vue-html": "html"
+    },
+    "window.zoomLevel": 0,
+    "editor.renderWhitespace": "boundary",
+    "editor.cursorBlinking": "smooth",
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+    "editor.codeLens": true,
+    "editor.snippetSuggestions": "top",
+    "vetur.completion.autoImport": false,
+    "vetur.format.defaultFormatter.postcss": "none",
+    "vetur.format.defaultFormatter.pug": "none",
+    "vetur.format.defaultFormatter.less": "none",
+    "vetur.format.defaultFormatter.scss": "none",
+    "vetur.format.defaultFormatter.ts": "none",
+
+
+    "editor.wordWrap": "on",
+    "prettier.tabWidth": 4,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "visible",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+        "vue",
+        "javascriptreact"
+    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        // "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[less]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "prettier.singleQuote": true,
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatter.js": "prettier-eslint",
+    "vetur.format.defaultFormatterOptions": {
+        "js-beautify-html": {
+            // #vue组件中html代码格式化样式
+            "wrap_attributes": "force-aligned", //也可以设置为“auto”，效果会不一样
+            "wrap_line_length": 200,
+            "end_with_newline": false,
+            "semi": false,
+            "singleQuote": true
+        },
+        "prettier": {
+            "singleQuote": true,
+            "semi": true,
+            "tabWidth": 4
+        }
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.foldingStrategy": "indentation",
+    // "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "editor.suggestSelection": "first",
+    "files.associations": {
+        "*.vue": "vue",
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.jsxBracketSameLine": true,
+    "prettier.printWidth": 120,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.enableSmartCommit": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.renderWhitespace": "all",
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "npm.exclude": "",
+    "eslint.runtime": "",
+    "emmet.includeLanguages": {
+        "wxml": "html"
+    },
+    "vetur.format.options.tabSize": 4,
+    "eslint.codeAction.showDocumentation": {
+    
+
+        "enable": true
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "editor.formatOnType": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "fileheader.Author": "Chen Xu",
+    "fileheader.LastModifiedBy": "Chen Xu",
+    "editor.quickSuggestionsDelay": 100,
+    "editor.hover.delay": 200,
+    "leek-fund.funds": [
+        "270023",
+        "003834",
+        "003096",
+        "002190",
+        "110011",
+        "501057",
+        "164402",
+        "001838",
+        "004997",
+        "000263",
+        "000961",
+        "161032",
+        "161725",
+        "009959",
+        "320007",
+        "519668",
+        "007874",
+        "004666",
+        "005827",
+        "009714",
+        "004433",
+        "000566",
+        "163406",
+        "163402",
+        "009776",
+        "007555",
+        "008591",
+        "004139"
+    ],
+    "leek-fund.fundAmount": {
+        "110011": {
+            "name": "易方达中小盘混合",
+            "amount": 3935.54,
+            "price": "8.1121",
+            "unitPrice": 0,
+            "earnings": 13.34,
+            "priceDate": "2021-07-01"
+        },
+        "161032": {
+            "name": "富国中证煤炭指数(LOF)",
+            "amount": 0,
+            "price": "1.1280",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "161725": {
+            "name": "招商中证白酒指数(LOF)",
+            "amount": 0,
+            "price": "1.2814",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "163402": {
+            "name": "兴全趋势投资混合(LOF)",
+            "amount": 0,
+            "price": "1.0216",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "163406": {
+            "name": "兴全合润混合(LOF)",
+            "amount": 0,
+            "price": "2.0564",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "164402": {
+            "name": "前海开源中航军工指数",
+            "amount": 0,
+            "price": "0.9390",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "270023": {
+            "name": "广发全球精选股票(QDII)",
+            "amount": 447.14,
+            "price": "3.4950",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-06-30"
+        },
+        "320007": {
+            "name": "诺安成长混合",
+            "amount": 0,
+            "price": "1.5240",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "501057": {
+            "name": "汇添富中证新能源汽车A",
+            "amount": 7189.4,
+            "price": "2.7106",
+            "unitPrice": 0,
+            "earnings": 169.75,
+            "priceDate": "2021-07-01"
+        },
+        "519668": {
+            "name": "银河成长混合",
+            "amount": 3266.73,
+            "price": "1.9355",
+            "unitPrice": 0,
+            "earnings": -7.93,
+            "priceDate": "2021-07-01"
+        },
+        "588000": {
+            "name": "华夏上证科创板50成份ETF",
+            "amount": 0,
+            "price": "1.2877",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "009776": {
+            "name": "中欧阿尔法混合A",
+            "amount": 8593.48,
+            "price": "1.2731",
+            "unitPrice": 0,
+            "earnings": 80.33,
+            "priceDate": "2021-07-01"
+        },
+        "001838": {
+            "name": "国投瑞银国家安全混合",
+            "amount": 6004.1,
+            "price": "1.1210",
+            "unitPrice": 0,
+            "earnings": -10.71,
+            "priceDate": "2021-07-01"
+        },
+        "000961": {
+            "name": "天弘沪深300ETF联接A",
+            "amount": 5198.4,
+            "price": "1.6533",
+            "unitPrice": 0,
+            "earnings": 11.32,
+            "priceDate": "2021-07-01"
+        },
+        "003096": {
+            "name": "中欧医疗健康混合C",
+            "amount": 2584.02,
+            "price": "4.2580",
+            "unitPrice": 0,
+            "earnings": 21.85,
+            "priceDate": "2021-07-01"
+        },
+        "000263": {
+            "name": "工银信息产业混合A",
+            "amount": 1869.64,
+            "price": "4.7240",
+            "unitPrice": 0,
+            "earnings": 9.89,
+            "priceDate": "2021-07-01"
+        },
+        "002190": {
+            "name": "农银新能源主题",
+            "amount": 1189.89,
+            "price": "3.4116",
+            "unitPrice": 0,
+            "earnings": 15.24,
+            "priceDate": "2021-07-01"
+        },
+        "003834": {
+            "name": "华夏能源革新股票",
+            "amount": 0,
+            "price": "2.4090",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "004997": {
+            "name": "广发高端制造股票A",
+            "amount": 0,
+            "price": "2.8135",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "009959": {
+            "name": "长安鑫悦消费混合C",
+            "amount": 0,
+            "price": "1.1300",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "008888": {
+            "name": "华夏国证半导体芯片ETF联接C",
+            "amount": 0,
+            "price": "1.0082",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "007874": {
+            "name": "华宝科技ETF联接C",
+            "amount": 0,
+            "price": "1.4168",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "007301": {
+            "name": "国联安中证半导体ETF联接C",
+            "amount": 0,
+            "price": "1.7521",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "004666": {
+            "name": "长城久嘉创新成长混合",
+            "amount": 0,
+            "price": "1.2560",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "005827": {
+            "name": "易方达蓝筹精选混合",
+            "amount": 0,
+            "price": "2.8299",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "009714": {
+            "name": "华安聚优精选混合",
+            "amount": 0,
+            "price": "1.1901",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "006131": {
+            "name": "华泰柏瑞沪深300ETF联接C",
+            "amount": 0,
+            "price": "1.2580",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "004433": {
+            "name": "南方有色金属ETF联接C",
+            "amount": 0,
+            "price": "1.0102",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        },
+        "000566": {
+            "name": "华泰柏瑞创新升级混合A",
+            "amount": 0,
+            "price": "3.2580",
+            "unitPrice": 0,
+            "earnings": 0,
+            "priceDate": "2021-03-29"
+        }
+    },
+    "leek-fund.fundSort": 1,
+    "leek-fund.stocks": [
+        "sh000001",
+        "sh000300",
+        "sh000016",
+        "sh000688",
+        "hk03690",
+        "hk00700",
+        "usr_ixic",
+        "usr_dji",
+        "usr_inx",
+        "hk00981",
+        "sh600519",
+        "hk01810",
+        "sh600121",
+        "sz000858",
+        "sh600763",
+        "usr_fold",
+        "sz300015",
+        "sz300274",
+        "sz000568",
+        "sh600438",
+        "sz300014",
+        "sz300413",
+        "sz300059",
+        "sz300750",
+        "sh601012",
+        "sz002460",
+        "sz300760",
+        "sh600309",
+        "sh603288",
+        "sz000333",
+        "sh600887",
+        "sz000895",
+        "sz002714",
+        "sz002511",
+        "sz000998",
+        "sh603899",
+        "sz000651",
+        "sz002032",
+        "sz300144",
+        "sh600009",
+        "sh600276",
+        "sz000661",
+        "sz000538",
+        "sz002363",
+        "sh600031",
+        "sz000338",
+        "sz002475",
+        "sz002594",
+        "sh600585",
+        "sh601899",
+        "sz000725",
+        "sh601021",
+        "sh601318",
+        "sh600036",
+        "sz000002",
+        "sh600809",
+        "sz002304",
+        "sh603501",
+        "sz002371",
+        "sh600703",
+        "sh688981",
+        "sz000799",
+        "sh600730",
+        "usr_tsla",
+        "sz002013",
+        "sh600760",
+        "sh601633",
+        "sz002027",
+        "sh601933",
+        "sz002570",
+        "sz002127",
+        "sz000625",
+        "sh600893",
+        "sh600030",
+        "sz300339",
+        "sz000158"
+    ],
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "leek-fund.stockSort": 1,
+    "eslint.alwaysShowStatus": true,
+    "leek-fund.statusBarStock": [
+        "sh000001"
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+}

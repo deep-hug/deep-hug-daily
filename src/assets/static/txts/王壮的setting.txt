@@ -1,0 +1,68 @@
+{
+    "diffEditor.ignoreTrimWhitespace": true,
+    "prettier.tabWidth": 4,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "eslint.nodePath": "",
+    "eslint.codeAction.showDocumentation": {
+        "enable": true
+    },
+    "vetur.format.options.tabSize": 4,
+    // 保存后自动修复格式
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.fixAll.eslint": true
+    },
+    // "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatter.html": "prettier", //格式化.vue中html
+    "vetur.format.defaultFormatter.js": "prettier-eslint",
+    "vetur.format.defaultFormatterOptions": {
+        "prettier": {
+            "singleQuote": true
+        },
+        "js-beautify-html": {
+            "wrap_attributes": "auto"
+        },
+        "prettyhtml": {
+            "printWidth": 120,
+            "singleQuote": true,
+            "wrapAttributes": false,
+            "sortAttributes": false
+        }
+    },
+    // 添加vue支持
+    "eslint.validate": [
+        "javascript",
+        "html",
+        "vue"
+    ],
+    "git.confirmSync": false,
+    "git.ignoreWindowsGit27Warning": true,
+    "workbench.sideBar.location": "left",
+    "vetur.grammar.customBlocks": {
+        "docs": "md",
+        "i18n": "json"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "todo-tree.tree.showScanModeButton": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "eslint.packageManager": "yarn",
+    "workbench.editor.enablePreview": false,
+    "workbench.statusBar.visible": false,
+    "editor.fontLigatures": null
+    //   "vetur.useWorkspaceDependencies": true,
+    //   "vetur.validation.interpolation": false
+}
