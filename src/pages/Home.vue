@@ -150,6 +150,16 @@
                 v-for="(domain, index) in dynamicValidateForm.domains"
                 :key="domain.key"
             >
+                <el-form-item>
+                    <el-select v-model="domain.selectV" placeholder="请选择" @change="changeSec1 => changeSec2(index)">
+                        <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item
                     :label="'value' + index"
                     :prop="'domains.' + index + '.value'"
@@ -180,6 +190,21 @@
                 >
             </el-form-item>
         </el-form>
+
+        <el-button @click="resetForm11">处理数据</el-button>
+        <br>
+        <el-input type="text" v-model="txturl"></el-input>
+        <br>
+        <el-button @click="jiagongURL()">生成链接</el-button>
+        <br>
+        <span id="copy_value">{{URLTxt}}</span>
+        <br>
+        <el-button @click="copy()">复制URL</el-button>
+        <br>
+
+        <el-input type="text" v-model="paramsURL"></el-input>
+        <el-button @click="changeParams()">转换参数</el-button>
+        
     </div>
 </template>
 
@@ -188,12 +213,19 @@ import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import storage from '../utils/storage.js';
 import requestsTest from '@requests/requestsTest.js';
 import DateDialog from '../components/common/TestDialog.vue';
+import base_64 from '../../common/utils/base_64.js';
 export default {
     components: {
         DateDialog
     },
     data() {
         var checkAge = (rule, value, callback) => {
+            let index = rule.field.split('.')[1];
+            let selectV = this.dynamicValidateForm.domains[index].selectV;
+            if (selectV == 5) {
+                callback();
+                return;
+            }
             if (!value) {
                 return callback(new Error('年龄不能为空'));
             }
@@ -222,6 +254,28 @@ export default {
             }
         };
         return {
+            options: [
+                {
+                    value: '1',
+                    label: '黄金糕'
+                }, {
+                    value: '2',
+                    label: '双皮奶'
+                }, {
+                    value: '3',
+                    label: '蚵仔煎'
+                }, {
+                    value: '4',
+                    label: '龙须面'
+                }, {
+                    value: '5',
+                    label: '北京烤鸭'
+                }
+            ],
+            txturl: '',
+            URLTxt: '',
+            paramsURL: '',
+            paramsOBJ: {},
             addressList: [],
             ruleForm: {
                 name: ''
@@ -235,16 +289,27 @@ export default {
                 date2: ''
             },
             pickerOptions1: {
-                disabledDate(time) {
-                    return time.getTime() > Date.now();
+                // disabledDate(time) {
+                //     return time.getTime() > Date.now();
+                // }
+                disabledDate: time => {
+                    if (this.form.date2) {
+                        return (
+                            (new Date(this.form.date2).getTime() < time.getTime()) || (time.getTime() > Date.now())
+                        );
+                    } else {
+                        return time.getTime() > Date.now();
+                    }
                 }
             },
             pickerOptions2: {
                 disabledDate: time => {
                     if (this.form.date1) {
                         return (
-                            new Date(this.form.date1).getTime() > time.getTime()
+                            (new Date(this.form.date1).getTime() > time.getTime()) || (time.getTime() > Date.now())
                         );
+                    } else {
+                        return time.getTime() > Date.now();
                     }
                 }
             },
@@ -261,14 +326,49 @@ export default {
                 domains: [
                     {
                         value: '',
-                        date1: ''
+                        date1: '',
+                        selectV: '',
+                    },
+                    {
+                        value: '',
+                        date1: '',
+                        selectV: '',
                     }
                 ],
                 email: ''
+            },
+            testForm: {
+                i: 3,
+                a: '',
+                b: null,
+                c: {
+                    d: 1,
+                    e: 3,
+                    g: '',
+                    h: null
+                },
+                ddd: {
+                    eee: ''
+                },
+                arr: [
+                    {
+                        x: 1,
+                        y: '',
+                    },
+                    { 
+                        xx: '',
+                        yy: null
+                    }
+                ],
+                arr1: [
+                    { xxx: '' }
+                ]
             }
         };
     },
-    created() {},
+    created() {
+        this.init();
+    },
     computed: {
         ...mapState('book', ['num']),
         ...mapGetters('book', ['numAdd1'])
@@ -276,6 +376,55 @@ export default {
     methods: {
         ...mapMutations('book', ['numIncrement']),
         ...mapActions('book', ['numIncrementAsync']),
+        changeSec2(index) {
+            this.$refs.dynamicValidateForm.validateField('domains.' + index + '.value',);
+        },
+        init() {
+            console.log('start');
+            const initData = [1, 2, 3];
+            const promiseAll = [];
+            let revertData = [];
+            initData.forEach(item => {
+                promiseAll.push(new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve('revert' + item);
+                    }, 1000);
+                }));
+            });
+            Promise.all(promiseAll).then((result) => {
+                revertData = [...result];
+                console.log([...result], 1234, revertData);
+                console.log('end');
+            }).catch((error) => {
+                console.log(error);
+            });
+        },
+        changeParams() {
+            let url = this.paramsURL.split('connectionVideo/')[1];
+            if (!url) return;
+            console.log(base_64().decode(url));
+        },
+        jiagongURL() {
+            this.URLTxt = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc9e994d92836e727&redirect_uri=${encodeURIComponent(this.txturl.replace('jinganH5', 'jinganH5-re'))}&response_type=code&scope=snsapi_userinfo&state=310106000000#wechat_redirect`;
+            this.$nextTick(() => {
+                this.copy();
+            });
+        },
+        copy() {
+            let target = null;
+            target = document.querySelector('#copy_value');
+            try {
+                let range = document.createRange();
+                range.selectNode(target);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                this.$message({ message: '复制成功', type: 'success'});
+            } catch (e) {
+                this.$message({ message: '复制失败', type: 'error'});
+            }
+        },
         handleClick() {
             console.log(111);
         },
@@ -374,15 +523,22 @@ export default {
             });
         },
         submitForm1() {
-            return new Promise((res, rej) => {
-                this.$refs['dynamicValidateForm'].validate(valid => {
+            this.$refs['dynamicValidateForm'].validate(valid => {
                     if (valid) {
-                        res(11);
+                        alert(11);
                     } else {
-                        rej();
+
                     }
                 });
-            });
+            // return new Promise((res, rej) => {
+            //     this.$refs['dynamicValidateForm'].validate(valid => {
+            //         if (valid) {
+            //             res(11);
+            //         } else {
+            //             rej();
+            //         }
+            //     });
+            // });
         },
         async resetForm1(formName) {
             // this.$refs[formName].resetFields();
@@ -411,6 +567,64 @@ export default {
                 value: '',
                 key: Date.now()
             });
+        },
+        resetForm11() {
+            let obj = this.deepClone(this.testForm);
+            if (obj && typeof obj === 'object') {
+                for (var key in obj) {
+                    if (obj[key] && obj[key].length && Object.prototype.toString.call(obj[key]) === '[object Array]') {
+                        obj[key].forEach((item, index) => {
+                            if (obj && typeof item === 'object') {
+                                for (var itemkey in item) {
+                                    if (item[itemkey] === '' || item[itemkey] === null) {
+                                        delete item[itemkey];
+                                    }
+                                }
+                                if (JSON.stringify(item) === '{}') {
+                                    obj[key].splice(index, 1);
+                                }
+                            }
+                        });
+                        if (JSON.stringify(obj[key])  === '[]') {
+                            delete obj[key];
+                        }
+                    }
+                    if (obj[key] && Object.prototype.toString.call(obj[key]) === '[object Object]') {
+                        for (var objkey in obj[key]) {
+                            if (obj[key][objkey] === '' || obj[key][objkey] === null) {
+                                delete obj[key][objkey];
+                            }
+                        }
+                        if (JSON.stringify(obj[key]) === '{}') {
+                            delete obj[key];
+                        }
+                    }
+                    if (obj[key] === '' || obj[key]=== null) {
+                        delete obj[key];
+                    }
+                }
+            }
+            console.log(JSON.stringify(this.testForm));
+            console.log(JSON.stringify(obj));
+            return obj;
+        },
+        //使用递归的方式实现数组、对象的深拷贝
+        deepClone(obj) {
+            //判断拷贝的要进行深拷贝的是数组还是对象，是数组的话进行数组拷贝，对象的话进行对象拷贝
+            var objClone = Array.isArray(obj) ? [] : {};
+            //进行深拷贝的不能为空，并且是对象或者是
+            if (obj && typeof obj === 'object') {
+                for (var key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        if (obj[key] && typeof obj[key] === 'object') {
+                            objClone[key] = this.deepClone(obj[key]);
+                        } else {
+                            objClone[key] = obj[key];
+                        }
+                    }
+                }
+            }
+            return objClone;
         }
     }
 };
