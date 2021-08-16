@@ -12,9 +12,22 @@
         <el-button @click="dialog" plain>dialog</el-button>
         <div>
             <h3>计数器</h3>
+            <!-- mapState 第一种使用 -->
+            <!-- <p>测试的数字:{{ countPlusLocalState }}</p> -->
+            <!-- <p>当前数字是:{{ nnum }}</p> -->
+            <!-- mapState第二种使用 -->
             <p>当前数字是:{{ num }}</p>
-            <p>转换后的数字是:{{ numAdd1 }}</p>
-            <el-button type="primary" @click="numIncrement(1)" plain
+
+            <!-- mapGetters的第一种使用 -->
+            <!-- <p>转换后的数字是:{{ numAdd1 }}</p> -->
+            <!-- mapGetters的第二种使用 -->
+            <p>转换后的数字是:{{snumAdd1}}</p>
+            <!-- ...mapMutation第一种使用 -->
+            <!-- <el-button type="primary" @click="numIncrement(1)" plain
+                >点我加1</el-button
+            > -->
+            <!-- ...mapMutation第二种使用 -->
+            <el-button type="primary" @click="snumIncrement(1)" plain
                 >点我加1</el-button
             >
             <el-button type="primary" @click="numIncrementAsync" plain
@@ -191,6 +204,10 @@
             </el-form-item>
         </el-form>
 
+        <div v-if="URLTxt">
+            <vue-qr :text="URLTxt" :size="400"></vue-qr>
+        </div>
+        <br>
         <el-button @click="resetForm11">处理数据</el-button>
         <br>
         <el-input type="text" v-model="txturl"></el-input>
@@ -203,12 +220,17 @@
         <br>
 
         <el-input type="text" v-model="paramsURL"></el-input>
+        <br>
         <el-button @click="changeParams()">转换参数</el-button>
-        
+        <br>
+        <span id="copy_para">{{copyParamsURL}}</span>
+        <br>
+        <el-button @click="copyPara()">复制URL</el-button>
     </div>
 </template>
 
 <script>
+import vueQr from 'vue-qr';
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import storage from '../utils/storage.js';
 import requestsTest from '@requests/requestsTest.js';
@@ -216,7 +238,8 @@ import DateDialog from '../components/common/TestDialog.vue';
 import base_64 from '../../common/utils/base_64.js';
 export default {
     components: {
-        DateDialog
+        DateDialog,
+        vueQr
     },
     data() {
         var checkAge = (rule, value, callback) => {
@@ -276,6 +299,7 @@ export default {
             URLTxt: '',
             paramsURL: '',
             paramsOBJ: {},
+            copyParamsURL: '',
             addressList: [],
             ruleForm: {
                 name: ''
@@ -370,11 +394,34 @@ export default {
         this.init();
     },
     computed: {
-        ...mapState('book', ['num']),
-        ...mapGetters('book', ['numAdd1'])
+        // mapState第一种使用
+        ...mapState('book', {
+            // 箭头函数
+            // nnum: state => state.num,
+            // 传字符串参数 'num' 等同于 `state => state.num`
+            nnum: 'num',
+             // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+            countPlusLocalState (state) {
+                return state.num + 10;
+            }
+        }),
+        // mapState第二种使用
+        // ...mapState('book', ['num']),
+
+        // mapGetters第一种使用
+        // ...mapGetters('book', ['numAdd1']),
+        // mapGetters第二种使用
+        ...mapGetters('book', {
+            snumAdd1: 'numAdd1'
+        })
     },
     methods: {
-        ...mapMutations('book', ['numIncrement']),
+        // mapMutations第一种使用
+        // ...mapMutations('book', ['numIncrement']),
+        // ...mapMutation第二种使用
+        ...mapMutations('book', {
+            snumIncrement: 'numIncrement'
+        }),
         ...mapActions('book', ['numIncrementAsync']),
         changeSec2(index) {
             this.$refs.dynamicValidateForm.validateField('domains.' + index + '.value',);
@@ -402,13 +449,38 @@ export default {
         changeParams() {
             let url = this.paramsURL.split('connectionVideo/')[1];
             if (!url) return;
+            this.copyParamsURL = base_64().decode(url);
             console.log(base_64().decode(url));
         },
+        copyPara() {
+            let target = null;
+            target = document.querySelector('#copy_para');
+            try {
+                let range = document.createRange();
+                range.selectNode(target);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                this.$message({ message: '复制成功', type: 'success'});
+            } catch (e) {
+                this.$message({ message: '复制失败', type: 'error'});
+            }
+        },
         jiagongURL() {
+            // 第一钟
             this.URLTxt = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc9e994d92836e727&redirect_uri=${encodeURIComponent(this.txturl.replace('jinganH5', 'jinganH5-re'))}&response_type=code&scope=snsapi_userinfo&state=310106000000#wechat_redirect`;
             this.$nextTick(() => {
                 this.copy();
             });
+            // 第二种
+            // this.URLTxt = '';
+            // let queryStr = this.txturl.split('connectionVideo/')[1];
+            // let txturl = this.txturl.split('from=weixin')[0] + 'from=weixin&sourceFrom=99&queryStr=' + queryStr + '#!/homeBlank';
+            // this.$nextTick(() => {
+            //     this.URLTxt = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc9e994d92836e727&redirect_uri=${encodeURIComponent(txturl.replace('jinganH5', 'jinganH5-re'))}&response_type=code&scope=snsapi_userinfo&state=310106000000#wechat_redirect`;
+            //     this.copy();
+            // });
         },
         copy() {
             let target = null;
