@@ -13,10 +13,10 @@
         <div>
             <h3>计数器</h3>
             <!-- mapState 第一种使用 -->
-            <!-- <p>测试的数字:{{ countPlusLocalState }}</p> -->
-            <!-- <p>当前数字是:{{ nnum }}</p> -->
+            <p>测试的数字:{{ countPlusLocalState }}</p>
+            <p>当前数字是:{{ nnum }}</p>
             <!-- mapState第二种使用 -->
-            <p>当前数字是:{{ num }}</p>
+            <!-- <p>当前数字是:{{ num }}</p> -->
 
             <!-- mapGetters的第一种使用 -->
             <!-- <p>转换后的数字是:{{ numAdd1 }}</p> -->
@@ -387,11 +387,20 @@ export default {
                 arr1: [
                     { xxx: '' }
                 ]
-            }
+            },
+            allArr: [
+                1,2,3,4,5,6,7,8,9,10,11
+            ]
         };
     },
     created() {
         this.init();
+        let len = Math.ceil(this.allArr.length / 5);
+        let arr = [];
+        for (let i=0;i<len;i++) {
+            arr.push(this.allArr.slice((i*5), (i+1)*5));
+        }
+        console.log(arr, 'arr');
     },
     computed: {
         // mapState第一种使用
