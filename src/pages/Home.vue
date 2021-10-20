@@ -10,6 +10,7 @@
         <el-button @click="loading" plain>loading</el-button>
         <el-button @click="toast" plain>toast</el-button>
         <el-button @click="dialog" plain>dialog</el-button>
+        <el-button @click="getPoint" plain>获取经纬度</el-button>
         <div>
             <h3>计数器</h3>
             <!-- mapState 第一种使用 -->
@@ -425,6 +426,45 @@ export default {
         })
     },
     methods: {
+        async getPoint() {
+            // 第一种方法（不是很推荐，因为要引用第三方地图的sdk并且需要在特定域名下才可以使用）
+            // try {
+            //     await this.getPoint1();
+            // } catch (error) {
+            //     console.log('jdk不支持在此域名下使用或者其他错误');
+            // }
+
+            // 第二种方法（利用HTML5新特性去获取经纬度）
+            if (navigator.geolocation) {
+                var that = this;
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    let latitude = position.coords.latitude;
+                    let longitude = position.coords.longitude;
+                    console.log('成功了: ' + latitude, longitude);
+                }, function (e) {
+                    that.$toast('报错了');
+                }, { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
+            } else {
+                this.$toast('该机器不支持定位');
+            }
+
+        },
+        getPoint1() {
+            return new Promise((res, rej) => {
+                 let geolocation = new BMap.Geolocation();
+                //调用定位，根据定位的坐标匹配医院距离
+                geolocation.getCurrentPosition(function (r) {
+                    if (this.getStatus() == window.BMAP_STATUS_SUCCESS) {
+                        var pt = r.point;
+                        console.log(pt, '成功获取经纬度');
+                        res();
+                    } else {
+                        console.log('获取经纬度失败');
+                        rej();
+                    }
+                }, {enableHighAccuracy: true});
+            });
+        },
         // mapMutations第一种使用
         // ...mapMutations('book', ['numIncrement']),
         // ...mapMutation第二种使用
