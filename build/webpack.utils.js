@@ -22,7 +22,7 @@ class webpackUtils {
             case 'mock':
                 config = {
                     IS_ENCRYPT: 'false',
-                    BASE_URL: '"http://localhost:8081"'
+                    BASE_URL: '"http://localhost:8082"'
                 };
                 break;
         }

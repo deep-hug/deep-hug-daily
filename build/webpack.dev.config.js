@@ -23,7 +23,7 @@ const devConfig = {
 
 
         // compress: true, // 启动gzip压缩
-        port: 8081, // 端口号
+        port: 8082, // 端口号
         host: '0.0.0.0',
         historyApiFallback: false,
         inline: true, //实时刷新

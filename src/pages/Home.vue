@@ -428,11 +428,11 @@ export default {
     methods: {
         async getPoint() {
             // 第一种方法（不是很推荐，因为要引用第三方地图的sdk并且需要在特定域名下才可以使用）
-            // try {
-            //     await this.getPoint1();
-            // } catch (error) {
-            //     console.log('jdk不支持在此域名下使用或者其他错误');
-            // }
+            try {
+                await this.getPoint1();
+            } catch (error) {
+                console.log('jdk不支持在此域名下使用或者其他错误');
+            }
 
             // 第二种方法（利用HTML5新特性去获取经纬度）
             if (navigator.geolocation) {
@@ -442,6 +442,7 @@ export default {
                     let longitude = position.coords.longitude;
                     console.log('成功了: ' + latitude, longitude);
                 }, function (e) {
+                    console.log(e, 'eeeeeeeee');
                     that.$toast('报错了');
                 }, { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
             } else {
