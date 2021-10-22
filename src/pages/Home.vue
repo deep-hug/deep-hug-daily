@@ -11,6 +11,9 @@
         <el-button @click="toast" plain>toast</el-button>
         <el-button @click="dialog" plain>dialog</el-button>
         <el-button @click="getPoint" plain>获取经纬度</el-button>
+        <el-button @click="goqr" plain>二维码页面</el-button>
+        <el-button @click="gomapUse" plain>通过地图获取经纬度</el-button>
+        <el-button @click="gohospitalList" plain>地图医院列表</el-button>
         <div>
             <h3>计数器</h3>
             <!-- mapState 第一种使用 -->
@@ -426,6 +429,15 @@ export default {
         })
     },
     methods: {
+        goqr() {
+            this.$router.push({ path: 'qr' });
+        },
+        gomapUse() {
+            this.$router.push({ path: 'mapUse' });
+        },
+        gohospitalList() {
+            this.$router.push({ path: 'hospitalList' });
+        },
         async getPoint() {
             // 第一种方法（不是很推荐，因为要引用第三方地图的sdk并且需要在特定域名下才可以使用）
             try {

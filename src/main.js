@@ -13,7 +13,11 @@ import dialog from './utils/dialog.js';
 // 引入vuex
 import store from './store';
 import 'babel-polyfill';
-
+import { BAIDU_MAP_AK } from './utils/constant.js';
+import VueBaiduMap from 'vue-baidu-map';
+Vue.use(VueBaiduMap, {
+    ak: BAIDU_MAP_AK
+});
 Vue.use(ElementUI);
 Vue.use(dialog);
 
@@ -27,3 +31,20 @@ new Vue({
         App
     }
 });
+
+// 访问移动端H5页面的时候打开
+
+// const attachFastClick = require('fastclick');
+// /**
+//  * rem 设备适配
+//  */
+//  (function() {
+//     attachFastClick.attach(document.body);
+//     var countRem = function() {
+//         var documentElement = document.documentElement;
+//         var width = documentElement.clientWidth;
+//         documentElement.style.fontSize = 100 * (width / 360) + 'px';
+//     };
+//     countRem();
+//     window.onresize = countRem;
+// })();

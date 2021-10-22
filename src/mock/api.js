@@ -18,6 +18,6 @@ function fromJSONFile(filename) {
 const proxy = {
     'GET /api/v1/topics': fromJSONFile('test/test'), //test
     'GET /api/mock/data': fromJSONFile('test/mock'), //mock
-
+    'GET /fdapp/api/rehabilitation-home/v1/hospital/level/01': fromJSONFile('test/level01')
 };
 module.exports = proxy;
