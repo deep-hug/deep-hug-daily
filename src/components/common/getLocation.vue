@@ -38,12 +38,15 @@ export default {
     watch: {
         position: {
             handler(newValue, oldValue) {
-                if (oldValue.coordinateX && newValue != oldValue) {
+                console.log(newValue, 111, oldValue);
+                if (newValue && newValue.coordinateX) {
+                    console.log(123456789);
                     this.defaultPosition.lng = newValue.coordinateX;
                     this.defaultPosition.lat = newValue.coordinateY;
                 }
             },
             deep: true,
+            immediate: true
         },
     },
     methods: {

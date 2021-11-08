@@ -49,15 +49,7 @@ export default {
             requestsTest.getPresignhosBylevel('01').then((res) => {
                 console.log(res, 'res');
                 if (res && res.length) {
-                    let len = res.length;
-                    let num = Math.ceil(len / 50);
-                    this.hospitalList = [];
-                    for (let index = 0; index < num; index++) {
-                        setTimeout(() => {
-                            console.log(index * 50, (index + 1) * 50);
-                            this.hospitalList = [...this.hospitalList, ...res.slice(index * 50, (index + 1) * 50)];
-                        }, 1000);
-                    }
+                    this.hospitalList = res;
                 }
             });
         },
@@ -77,7 +69,7 @@ export default {
             this.hospitalList.sort(function(a, b) {
                 return a.distance * 1 - b.distance * 1;
             });
-            this.position = res.point;
+            this.position = this.hospitalList[0];
         },
     },
 };
