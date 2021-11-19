@@ -39,10 +39,10 @@ export default {
         position: {
             handler(newValue, oldValue) {
                 console.log(newValue, 111, oldValue);
-                if (newValue && newValue.coordinateX) {
+                if (newValue && newValue.lng) {
                     console.log(123456789);
-                    this.defaultPosition.lng = newValue.coordinateX;
-                    this.defaultPosition.lat = newValue.coordinateY;
+                    this.defaultPosition.lng = newValue.lng;
+                    this.defaultPosition.lat = newValue.lat;
                 }
             },
             deep: true,

@@ -69,7 +69,8 @@ export default {
             this.hospitalList.sort(function(a, b) {
                 return a.distance * 1 - b.distance * 1;
             });
-            this.position = this.hospitalList[0];
+            // this.position = this.hospitalList[0];
+            this.position = res.point;
         },
     },
 };
