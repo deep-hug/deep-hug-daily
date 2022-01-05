@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、es5 里面的类
+        // 最简单类，只有属性，没有方法
+        // function Person(params) {
+        //     this.name = '张三';
+        //     this.age = 20;
+        // }
+        // let p = new Person();
+        // alert(p.name)
+
+        // 2、构造函数和原型链里面增加方法
+        // function Person(params) {
+        //     this.name = '张三';
+        //     this.age = 20;
+        //     this.run = function (params) {
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // let p = new Person();
+        // p.run()
+        // p.work()
+        // console.log(p.sex)
+
+        // 3、类里面的静态方法
+        // function Person(params) {
+        //     this.name = '张三';// 属性
+        //     this.age = 20;
+        //     this.run = function (params) {// 实例方法
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // Person.getInfo = function (params) {
+        //     alert('我是静态方法')
+        // }
+        // let p = new Person();
+        // p.run()
+        // Person.getInfo()
+
+        // 4、es5中的继承 对象冒充实现继承
+        // function Person(params) {
+        //     this.name = '张三';// 属性
+        //     this.age = 20;
+        //     this.run = function (params) {// 实例方法
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // // Web 类 继承Person类 原型链+对象冒充的组合继承方式
+        // function Web() {
+        //     Person.call(this)// 对象冒充，可以继承构造函数里面的属性和方法，但是无法继承原型链上面的属性和方法
+        // }
+        // let w = new Web()
+        // w.run()
+        
+        // 5、es5继承 原型链实现继承
+        // function Person(params) {
+        //     this.name = '张三';// 属性
+        //     this.age = 20;
+        //     this.run = function (params) {// 实例方法
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // // Web 类 继承Person类 原型链+对象冒充的组合继承方式
+        // function Web() {
+        // }
+        // Web.prototype = new Person()// 原型链实现继承
+        // let w = new Web()
+        // w.work()
+
+        // 6、es5继承 原型链实现继承 的问题
+        // function Person(name, age) {
+        //     this.name = name;// 属性
+        //     this.age = age;
+        //     this.run = function (params) {// 实例方法
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // function Web(params) {
+            
+        // }
+        // Web.prototype = new Person();
+        // let w = new Web('2', 30)//实例化子类的时候没法给父类传参
+        // w.run()
+
+        // 7、es5 对象冒充+原型链 组合继承
+        // function Person(name, age) {
+        //     this.name = name;// 属性
+        //     this.age = age;
+        //     this.run = function (params) {// 实例方法
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // function Web(name, age) {
+        //     Person.call(this, name, age)
+        // }
+        // Web.prototype = new Person();
+        // let w = new Web('2', 30)//实例化子类的时候没法给父类传参
+        // w.run()
+
+        // 8、es5 对象冒充+原型链 组合继承  另外一种方式
+        // function Person(name, age) {
+        //     this.name = name;// 属性
+        //     this.age = age;
+        //     this.run = function (params) {// 实例方法
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function(params) {
+        //     alert(this.name + '在工作')
+        // }
+        // function Web(name, age) {
+        //     Person.call(this, name, age)
+        // }
+        // Web.prototype = Person.prototype;
+        // let w = new Web('20', 30)//实例化子类的时候没法给父类传参
+        // w.run()
+
+
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.run = function (params) {
+        //         alert(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男';
+        // Person.prototype.work = function (params) {
+        //     alert(this.name + '在工作')
+        // }
+        // function Web(name, age) {
+        //     Person.call(this, name, age)
+        // }
+        // Web.prototype = new Person()
+        // let w = new Web('张三', 20)
+        // console.log(w, 'w')
+        // w.run()
+        // w.work()
+        
+
+        /* 
+            联系 es5继承
+        */
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.run = function (params) {
+        //         console.log(this.name + '在运动')
+        //     }
+        // }
+        // Person.prototype.sex = '男'
+        // Person.prototype.work = function (params) {
+        //     console.log(this.name + '在工作')
+        // }
+        // function Web(name, age) {
+        //     Person.call(this, name, age)
+        // }
+        // Web.prototype = new Person();
+        // let w = new Web('张三', 50)
+        // console.log(w.name, w.age, w.sex)
+        // w.run()
+        // w.work()
+
+
+    </script>
+</body>
+</html>
