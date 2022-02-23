@@ -23,6 +23,13 @@ let baerArr = [
             title: '首页'
         }
     },
+    {
+        path: '/demo',
+        component: () => import(/* webpackChunkName: "home" */'../pages/Demo.vue'),
+        meta: {
+            title: 'demo页面'
+        }
+    },
 ];
 // 路由错误页面配置
 let errorList = [
