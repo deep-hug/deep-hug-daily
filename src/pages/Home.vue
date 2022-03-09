@@ -398,6 +398,10 @@ export default {
         };
     },
     created() {
+        // 获取store中的state的值
+        console.log(this.$store.state.book.num, '获取store中的state的值');
+        // 获取store中的getters的值
+        console.log(this.$store.getters['book/numAdd1'], '获取store中的getters的值');
         this.init();
         let len = Math.ceil(this.allArr.length / 5);
         let arr = [];

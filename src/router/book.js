@@ -1,6 +1,7 @@
 const book = [
     {
         path: '/book',
+        name: '/book',
         component: () => import(/* webpackChunkName: "book" */'../pages/book/Index.vue'),
         meta: {
             title: '书籍'

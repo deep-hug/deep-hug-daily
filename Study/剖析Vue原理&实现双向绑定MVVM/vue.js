@@ -3,7 +3,7 @@
  * @Descripttion: vue双向数据绑定
  * @Date: 2022-02-23 15:48:13
  * @LastEditors: DeepHug
- * @LastEditTime: 2022-02-23 17:23:11
+ * @LastEditTime: 2022-02-23 17:39:36
  */
 class Vue {
     constructor(options) {
@@ -15,10 +15,12 @@ class Vue {
 
         // 属性代理
         Object.keys(this.$data).forEach(key => {
+            console.log(key);
             Object.defineProperty(this, key, {
                 enumerable: true,
                 configurable: true,
                 get() {
+                    console.log(this.$data[key], key);
                     return this.$data[key];
                 },
                 set(newValue) {

@@ -25,6 +25,11 @@ class webpackUtils {
                     BASE_URL: '"http://localhost:8082"'
                 };
                 break;
+            default :
+                config = {
+                    IS_ENCRYPT: 'false',
+                    BASE_URL: '"http://localhost:8082"'
+                };
         }
         return config;
     }
