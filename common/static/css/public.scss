@@ -218,3 +218,11 @@ iframe {
     width:200px;
 }
 
+/*
+超出显示为...
+*/
+.overflowHide {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

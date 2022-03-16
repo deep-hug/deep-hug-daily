@@ -14,11 +14,18 @@ requireContext.keys().forEach(fileName => {
 let baerArr = [
     {
         path: '/',
-        redirect: '/home'
+        redirect: '/shoppingCart'
     },
     {
         path: '/home',
         component: () => import(/* webpackChunkName: "home" */'../pages/Home.vue'),
+        meta: {
+            title: '首页'
+        }
+    },
+    {
+        path: '/shoppingCart',
+        component: () => import(/* webpackChunkName: "home" */'../pages/shoppingCart/Index.vue'),
         meta: {
             title: '首页'
         }

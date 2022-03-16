@@ -12,6 +12,14 @@
 
 
 <a href="https://fapiao.jajkmh.com/pdf/202112/1/31060121-1118969820.pdf" download="31060121_1118969820.pdf" target="_blank" id="pdf" class="progress-a">下载票据文件</a>
+
+
+
+        <div class="box">
+            <div class="w-3"></div>
+            <div class="w-11"></div>
+            <div class="w-3"></div>
+        </div>
     </div>
 </template>
 
@@ -187,5 +195,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.box {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    .w-3 {
+        flex-grow: 1;
+        background: pink;
+    }
+    .w-11 {
+        flex-grow: 1;
+        background: #00c1de;
+    }
+}
 </style>
