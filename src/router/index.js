@@ -14,7 +14,7 @@ requireContext.keys().forEach(fileName => {
 let baerArr = [
     {
         path: '/',
-        redirect: '/shoppingCart'
+        redirect: '/home'
     },
     {
         path: '/home',
