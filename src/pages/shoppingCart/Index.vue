@@ -57,7 +57,59 @@ export default {
             showCart: false
         };
     },
+    created () {
+        // 深拷贝使用
+        // let obj1 =  {
+        //     a: {
+        //         b: 1
+        //     },
+        //     c: 2,
+        //     d: [3,4,5],
+        //     e: () => {
+        //         console.log(6);
+        //     },
+        //     f: new Date(),
+        //     g: Infinity,
+        // };
+        // // console.log(this.deepClone(obj1));
+        // let obj2 = this.deepClone(obj1);
+        // // let obj2 = JSON.parse(JSON.stringify(obj1));
+        // console.log(obj2, 'obj2');
+        // obj2.e();
+        // console.log(obj2.f);
+        // console.log(obj2.g);
+        // 扁平化数组使用
+        // var arr1 = [1,2,[3,[5,6], [7], [9]],10];
+        // var arr2 = this.flatten(arr1);
+        // console.log(arr2, 'arr2');
+    },
     methods: {
+        deepClone(obj) {
+            let  objClone = Array.isArray(obj) ? [] : {};
+            if (obj && typeof obj === 'object') {
+                for(let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        if (obj[key] && typeof obj[key] === 'object') {
+                            objClone[key] = this.deepClone(obj[key]);
+                        } else {
+                            objClone[key] = obj[key];
+                        }
+                    }
+                }
+            }
+            return objClone;
+        },
+        flatten(arr) {
+            return arr.toString().split(',');
+            return arr.join(',').split(',');
+            return arr.reduce((res, item) => {
+                return res.concat(Array.isArray(item) ? this.flatten(item) : item);
+            }, []);
+            while (arr.some(item => Array.isArray(item))) {
+                arr = [].concat(...arr);
+            }
+            return arr;
+        },
         // 将商品添加到购物车
         addCart(item) {
             // 判断商品是否有库存

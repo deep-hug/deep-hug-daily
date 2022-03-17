@@ -37,6 +37,13 @@ let baerArr = [
             title: 'demo页面'
         }
     },
+    {
+        path: '/child',
+        component: () => import(/* webpackChunkName: "home" */'../pages/child/child.vue'),
+        meta: {
+            title: 'child页面'
+        }
+    },
 ];
 // 路由错误页面配置
 let errorList = [
