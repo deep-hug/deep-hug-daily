@@ -38,6 +38,13 @@ let baerArr = [
         }
     },
     {
+        path: '/VirtualList',
+        component: () => import(/* webpackChunkName: "home" */'../pages/VirtualList.vue'),
+        meta: {
+            title: '虚拟列表'
+        }
+    },
+    {
         path: '/child',
         component: () => import(/* webpackChunkName: "home" */'../pages/child/child.vue'),
         meta: {
