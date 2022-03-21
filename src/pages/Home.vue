@@ -613,7 +613,7 @@ export default {
                 });
         },
         getMockData() {
-            requestsTest.getMockData().then(res => {
+            requestsTest.getMockData({ id: 1 }).then(res => {
                 console.log(res, 'mock数据');
             });
         },

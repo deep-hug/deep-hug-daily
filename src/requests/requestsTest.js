@@ -8,8 +8,8 @@ class requestsTest {
     getAddressList(params) {
         return get(BASE_URL_CONSTANT+'/api/v1/topics', { params });
     }
-    getMockData() {
-        return get(BASE_URL_CONSTANT + '/api/mock/data');
+    getMockData(data) {
+        return post(BASE_URL_CONSTANT + '/api/mock/data', { data });
     }
     login(data) {
         return post(BASE_URL_CONSTANT + '/proxy/fdapp/oauth/v1/token', { data, headers: { 'Resource-type': 'bigscreen-maternalchild', }, } );
