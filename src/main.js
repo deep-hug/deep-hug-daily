@@ -34,17 +34,23 @@ new Vue({
 
 // 访问移动端H5页面的时候打开
 
-// const attachFastClick = require('fastclick');
-// /**
-//  * rem 设备适配
-//  */
-//  (function() {
-//     attachFastClick.attach(document.body);
-//     var countRem = function() {
-//         var documentElement = document.documentElement;
-//         var width = documentElement.clientWidth;
-//         documentElement.style.fontSize = 100 * (width / 360) + 'px';
-//     };
-//     countRem();
-//     window.onresize = countRem;
-// })();
+const attachFastClick = require('fastclick');
+/**
+ * rem 设备适配
+ */
+ (function() {
+    attachFastClick.attach(document.body);
+    var countRem = function() {
+        const documentElement = document.documentElement;
+        const width = documentElement.clientWidth;
+        const remMultiple = width / 360;
+        window.REM_MULTIPLE = remMultiple;
+        let fontSize = 100 * remMultiple;
+        documentElement.style.fontSize = `${fontSize}px`;
+
+    };
+    countRem();
+    window.addEventListener('resize', () => {
+        countRem();
+    });
+})();

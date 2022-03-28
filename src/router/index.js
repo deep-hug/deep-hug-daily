@@ -38,7 +38,7 @@ let baerArr = [
         }
     },
     {
-        path: '/VirtualList',
+        path: '/virtualList',
         component: () => import(/* webpackChunkName: "home" */'../pages/VirtualList.vue'),
         meta: {
             title: '虚拟列表'

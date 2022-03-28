@@ -43,11 +43,11 @@ export default {
         },
         height: {
             type: Number,
-            default: 400,
+            default: 400 * window.REM_MULTIPLE,
         },
         itemHeight: {
             type: Number,
-            default: 30,
+            default: 30 * window.REM_MULTIPLE,
         },
     },
     computed: {
@@ -56,13 +56,13 @@ export default {
         },
     },
     mounted() {
-        // this.updateVisibleData();
+        this.updateVisibleData();
 
 
         // 如果跳转下一个页面，要将其 scrollTop 记录下来，以便于返回页面使用
-        let scrollTopValue = 2000;
-        this.updateVisibleData(scrollTopValue);
-        document.querySelector('.list-view').scrollTop=scrollTopValue; // 将 scrollTop 赋值到最外层盒子
+        // let scrollTopValue = 2000;
+        // this.updateVisibleData(scrollTopValue);
+        // document.querySelector('.list-view').scrollTop=scrollTopValue; // 将 scrollTop 赋值到最外层盒子
     },
     data() {
         return {
@@ -106,6 +106,7 @@ export default {
     width: 200px;
     margin-top: 100px;
     margin-left: 100px;
+    font-size: 16px;
 }
 .list-view-phantom {
     position: absolute;
@@ -121,7 +122,6 @@ export default {
     position: absolute;
 }
 .list-view-item {
-    padding: 5px;
     color: #666;
     line-height: 30px;
     box-sizing: border-box;
