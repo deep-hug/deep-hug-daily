@@ -34,13 +34,25 @@ const devConfig = {
     module: {
         rules: [
             {
-                test: /\.(sass|scss|less|css)$/,
+                test: /\.(less|css)$/,
                 use: [
                     'style-loader',
                     'css-loader',
                     'postcss-loader',
-                    'less-loader',
-                    'sass-loader'
+                    {
+                        loader: 'less-loader',
+                    }
+                ]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    {
+                        loader: 'sass-loader',
+                    }
                 ]
             },
         ]

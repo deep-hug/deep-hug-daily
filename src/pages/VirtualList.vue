@@ -14,7 +14,7 @@
         ></div>
         <ul ref="content" class="list-view-content">
             <li
-                class="list-view-item"
+                class="list-view-item norem"
                 :style="{
                     height: itemHeight + 'px',
                 }"
@@ -107,23 +107,24 @@ export default {
     margin-top: 100px;
     margin-left: 100px;
     font-size: 16px;
-}
-.list-view-phantom {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: -1;
-}
-.list-view-content {
-    left: 0;
-    right: 0;
-    top: 0;
-    position: absolute;
-}
-.list-view-item {
-    color: #666;
-    line-height: 30px;
-    box-sizing: border-box;
+
+    .list-view-phantom {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: -1;
+    }
+    .list-view-content {
+        left: 0;
+        right: 0;
+        top: 0;
+        position: absolute;
+    }
+    .list-view-item.norem {
+        color: #666;
+        line-height: 30px;
+        box-sizing: border-box;
+    }
 }
 </style>
