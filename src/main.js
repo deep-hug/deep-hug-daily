@@ -38,19 +38,19 @@ const attachFastClick = require('fastclick');
 /**
  * rem 设备适配
  */
- (function() {
-    attachFastClick.attach(document.body);
-    var countRem = function() {
-        const documentElement = document.documentElement;
-        const width = documentElement.clientWidth;
-        const remMultiple = width / 360;
-        window.REM_MULTIPLE = remMultiple;
-        let fontSize = 100 * remMultiple;
-        documentElement.style.fontSize = `${fontSize}px`;
+//  (function() {
+//     attachFastClick.attach(document.body);
+//     var countRem = function() {
+//         const documentElement = document.documentElement;
+//         const width = documentElement.clientWidth;
+//         const remMultiple = width / 360;
+//         window.REM_MULTIPLE = remMultiple;
+//         let fontSize = 100 * remMultiple;
+//         documentElement.style.fontSize = `${fontSize}px`;
 
-    };
-    countRem();
-    window.addEventListener('resize', () => {
-        countRem();
-    });
-})();
+//     };
+//     countRem();
+//     window.addEventListener('resize', () => {
+//         countRem();
+//     });
+// })();
