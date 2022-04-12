@@ -83,6 +83,32 @@ export default {
         // var arr2 = this.flatten(arr1);
         // console.log(arr2, 'arr2');
 
+        // 手写 instanceof 方法
+        const myInstanceiof1 = (left, right) => {
+            if (typeof left !== 'object' || left === null) return false;
+            let proto = left.__proto__;
+            while (proto) {
+                if (proto === right.prototype) {
+                    return true;
+                }
+                proto = myInstanceiof1(proto);
+            }
+            return false;
+        };
+        let obj = { name: 'jane' };
+            class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            }
+
+            console.log(obj instanceof Object, obj instanceof Person); //true false
+            console.log(
+            myInstanceiof1(obj, Object),
+            myInstanceiof1(obj, Person)
+        );
+
         // 宏任务和微任务执行顺序： 同步任务 >= 微任务 >> 宏任务
         setTimeout(() => {
             console.log(2);
