@@ -131,6 +131,31 @@ export default {
         };
         foo();
         // foo baz 应该在 baz 之后、bar 之前 bar
+
+
+        // eslint-disable-next-line require-jsdoc
+        async function a1() {
+            console.log('1');
+            await a2();
+            console.log('2');
+        }
+        // eslint-disable-next-line require-jsdoc
+        async function a2() {
+            console.log('3');
+        }
+        console.log('4');
+        setTimeout(() => {
+            console.log('5');
+        }, 0);
+        a1();
+        new Promise(res => {
+            console.log('6');
+            res();
+        }).then(() => {
+            console.log('7');
+        });
+        console.log('8');
+        // 4 1 3 6 8 2 7 5
     },
     methods: {
         deepClone(obj) {
