@@ -82,6 +82,55 @@ export default {
         // var arr1 = [1,2,[3,[5,6], [7], [9]],10];
         // var arr2 = this.flatten(arr1);
         // console.log(arr2, 'arr2');
+
+        // 宏任务和微任务执行顺序： 同步任务 >= 微任务 >> 宏任务
+        setTimeout(() => {
+            console.log(2);
+        }, 0);
+        new Promise((res, rej) => {
+            console.log(1);
+            for (let index = 0; index < 100; index++) {
+                index = 999;
+                res();
+            }
+            console.log(3);
+        }).then(res => {
+            console.log(5);
+        });
+        console.log(4);
+        // 1 3 4 5 2
+
+
+        console.log(2);
+        new Promise(()=>{
+            console.log(4);
+        });
+        new Promise((resolve,reject)=>{
+            resolve();
+        }).then(()=>{
+            console.log(3);
+        });
+        console.log(1);
+        // 2 4 1 3
+
+        setTimeout(()=>{console.log('宏1');},0);
+        new Promise((resolve,reject)=>{}).then(console.log('微'));
+        setTimeout(()=>{console.log('宏2');},0);
+        // 微 宏1 宏2
+
+
+        const bar = () => console.log('bar');
+        const baz = () => console.log('baz');
+        const foo = () => {
+            console.log('foo');
+            setTimeout(bar, 0);
+            new Promise((resolve, reject) =>
+                resolve('应该在 baz 之后、bar 之前')
+            ).then(resolve => console.log(resolve));
+            baz();
+        };
+        foo();
+        // foo baz 应该在 baz 之后、bar 之前 bar
     },
     methods: {
         deepClone(obj) {
