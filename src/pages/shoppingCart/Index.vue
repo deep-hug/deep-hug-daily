@@ -182,6 +182,29 @@ export default {
         });
         console.log('8');
         // 4 1 3 6 8 2 7 5
+
+        
+
+        let myInstanceof = (left, right) => {
+            if (typeof left !== 'object' || left === null) return false;
+            let proto = left.__proto__;
+            while (proto) {
+                if (proto === right.prototype) {
+                    return true;
+                }
+                proto = myInstanceof(proto);
+            }
+            return false;
+        };
+        let obj1 = { a: 1 };
+        class person1 {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+        console.log(obj1 instanceof Object, obj1 instanceof person1);
+        console.log(myInstanceof(obj1, Object), myInstanceof(obj1, person1));
     },
     methods: {
         deepClone(obj) {
