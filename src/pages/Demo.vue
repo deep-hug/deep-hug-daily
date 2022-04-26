@@ -58,9 +58,34 @@ export default {
             }
         };
         console.log(this.getValue(info, 'a.b.c')) ;
+
+        let myIntanceof = (left, right) => {
+            if (typeof left !== 'object' || !left) return false;
+            let proto = left.__proto__;
+            while (proto) {
+                if (proto == right.prototype) {
+                    return true;
+                } else {
+                    proto = myIntanceof(proto);
+                }
+            }
+            return false;
+        };
+
+        class person {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+        var obj = { a: 1 };
+         console.log(obj instanceof Object, obj instanceof person); //true false
+            console.log(
+            myIntanceof(obj, Object),
+            myIntanceof(obj, person)
+        );
     },
     methods: {
-         getValue(obj, str) {
+        getValue(obj, str) {
             return str.split('.').reduce((newObj, k) => newObj[k], obj);
         },
          deepClone(obj) {

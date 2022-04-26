@@ -230,6 +230,12 @@
         <span id="copy_para">{{copyParamsURL}}</span>
         <br>
         <el-button @click="copyPara()">复制URL</el-button>
+        经期：16号
+        味道：甜的
+        身高：159 
+        体重：139
+        父母电话：13532990134  18317820136
+        父母身份证：410225197202252633（50）  410225197305012640（49）
     </div>
 </template>
 
