@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <span class="mytooltip" title="个性样式个性样式个性样式个性样式个性样式" >
+            格式样式:
+        </span>
         <!-- 我是Home -->
         <ul>
             <li @click="goToBook">图书</li>
@@ -246,7 +249,9 @@ import storage from '../utils/storage.js';
 import requestsTest from '@requests/requestsTest.js';
 import DateDialog from '../components/common/TestDialog.vue';
 import base_64 from '../../common/utils/base_64.js';
+import mytooltip from '../utils/mytooltip.js';
 export default {
+    mixins: [mytooltip],
     components: {
         DateDialog,
         vueQr
