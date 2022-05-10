@@ -3,6 +3,9 @@
         <span class="mytooltip" title="个性样式个性样式个性样式个性样式个性样式" >
             格式样式:
         </span>
+        <span class="mytooltip" title="个性样式个性样式个性样式个性样式个性样ssss式" >
+            格式样式:
+        </span>
         <!-- 我是Home -->
         <ul>
             <li @click="goToBook">图书</li>
@@ -232,6 +235,9 @@
         <br>
         <span id="copy_para">{{copyParamsURL}}</span>
         <br>
+        <span class="mytooltip" title="个性样式个性样式个性样式个性样式个性样ssss式" >
+            格式样式:
+        </span>
         <el-button @click="copyPara()">复制URL</el-button>
         经期：16号
         味道：甜的
