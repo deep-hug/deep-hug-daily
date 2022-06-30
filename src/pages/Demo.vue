@@ -3,6 +3,7 @@
         <div id="pt1">
             {{pt1}}
         </div>
+        {{info.name}}{{info.address ? ',' : ''}}{{info.address}}
         <input type="text" id="myinput" v-model="testPt">
         <el-button @click="focus">出现</el-button>
         <el-button @click="down">下载</el-button>
@@ -134,6 +135,52 @@ export default {
         },
         focus() {
             this.kb.show();
+        },
+        // 校验手机号
+        checkPhone(phone) {
+            if (!(/^1[3456789]\d{9}$/.test(phone))) {
+                this.$message({
+                    message: '手机号码有误，请重填',
+                    type: 'warning'
+                });
+                return false;
+            } else {
+                return true;
+            }
+        },
+        // 校验中文
+        checkChinese(name) {
+            if (!(/^[\u4E00-\u9FA5]{2,4}$/.test(name))) {
+                this.$message({
+                    message: '姓名有误，请重填',
+                    type: 'warning'
+                });
+                return false;
+            } else {
+                return true;
+            }
+        },
+        // 校验身份证
+        checkIdCard(idCard) {
+            if (!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(idCard))) {
+                this.$message({
+                    message: '身份证号码有误，请重填',
+                    type: 'warning'
+                });
+                return false;
+            } else {
+                return true;
+            }
+        },
+        // 去重复获取所有用户的deptId
+        abc() {
+            let arr = [];
+            this.userList.forEach(item => {
+                if (arr.indexOf(item.deptId) === -1) {
+                    arr.push(item.deptId);
+                }
+            });
+            return arr;
         },
         useKeyBoard() {
             let that = this;
