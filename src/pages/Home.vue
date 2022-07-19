@@ -239,7 +239,7 @@
             格式样式:
         </span>
         <el-button @click="copyPara()">复制URL</el-button>
-        经期：16号
+        经期（大姨妈）：16号
         味道：甜的
         身高：159 
         体重：139

@@ -21,6 +21,10 @@ Vue.use(VueBaiduMap, {
 Vue.use(ElementUI);
 Vue.use(dialog);
 
+
+import ELTable3 from './components/el/el-table3.vue';
+Vue.component('el-table3', ELTable3);
+
 new Vue({
     el: '#app',
     router,
