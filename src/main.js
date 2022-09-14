@@ -38,7 +38,7 @@ new Vue({
 
 // 访问移动端H5页面的时候打开
 
-const attachFastClick = require('fastclick');
+// const attachFastClick = require('fastclick');
 /**
  * rem 设备适配
  */

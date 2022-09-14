@@ -20,6 +20,8 @@
         <el-button @click="goqr" plain>二维码页面</el-button>
         <el-button @click="gomapUse" plain>通过地图获取经纬度</el-button>
         <el-button @click="gohospitalList" plain>地图医院列表</el-button>
+        <el-button @click="setLocal" plain>设置本地local</el-button>
+        <el-button @click="getLocal" plain>获取本地local</el-button>
         <div>
             <h3>计数器</h3>
             <!-- mapState 第一种使用 -->
@@ -256,6 +258,7 @@ import requestsTest from '@requests/requestsTest.js';
 import DateDialog from '../components/common/TestDialog.vue';
 import base_64 from '../../common/utils/base_64.js';
 import mytooltip from '../utils/mytooltip.js';
+let Base64 = require('js-base64').Base64;
 export default {
     mixins: [mytooltip],
     components: {
@@ -415,6 +418,12 @@ export default {
         };
     },
     created() {
+        // console.log(Base64.encode('{"hosOrgCode":"42503162X00","oneDeptCode":"内分泌科","deptCode":"97Z","deptName":"糖尿病优化门诊专科","hospitalGrade":"2"}'), 555555555);//加密
+        // console.log(Base64.decode('eyJob3NPcmdDb2RlIjoiNDI1MDMxNjJYMDAiLCJvbmVEZXB0Q29kZSI6IuWGheWIhuazjOenkSIsImRlcHRDb2RlIjoiOTdaIiwiZGVwdE5hbWUiOiLns5blsL/nl4XkvJjljJbpl6jor4rkuJPnp5EiLCJob3NwaXRhbEdyYWRlIjoiMiJ9'), 6666666);//解密
+
+        console.log(Base64.encode('{"hosOrgCode":"42503195300","oneDeptCode":"0708","deptCode":"7","deptName":"全科5(五官科)","hospitalGrade":"2"}'), 555555555);//加密
+        console.log(Base64.decode(decodeURIComponent('eyJob3NPcmdDb2RlIjoiNDI1MDMxOTUzMDAiLCJvbmVEZXB0Q29kZSI6IjA3MDgiLCJkZXB0Q29kZSI6IjciLCJkZXB0TmFtZSI6IuWFqOenkTUo5LqU5a6Y56eRKSIsImhvc3BpdGFsR3JhZGUiOiIyIn0=')), 6666666);//解密
+
         // 获取store中的state的值
         console.log(this.$store.state.book.num, '获取store中的state的值');
         // 获取store中的getters的值
@@ -450,6 +459,12 @@ export default {
         })
     },
     methods: {
+        setLocal() {
+            localStorage.setItem('test', 'test');
+        },
+        getLocal() {
+            alert(localStorage.getItem('test'));
+        },
         goqr() {
             this.$router.push({ path: 'qr' });
         },

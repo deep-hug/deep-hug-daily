@@ -62,6 +62,8 @@
     "eslint-plugin-vue": "^7.9.0",
     "fastclick": "^1.0.6",
     "jquery": "^3.6.0",
+    "js-audio-recorder": "^1.0.7",
+    "js-base64": "^3.7.2",
     "jsonc": "^2.0.0",
     "node-rsa": "^1.1.1",
     "path-browserify": "^1.0.1",

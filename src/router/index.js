@@ -24,6 +24,13 @@ let baerArr = [
         }
     },
     {
+        path: '/audio',
+        component: () => import(/* webpackChunkName: "home" */'../pages/audio.vue'),
+        meta: {
+            title: '录音'
+        }
+    },
+    {
         path: '/shoppingCart',
         component: () => import(/* webpackChunkName: "home" */'../pages/shoppingCart/Index.vue'),
         meta: {
