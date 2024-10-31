@@ -16,14 +16,14 @@ export default {
 .template-area {
     background-color: #fff;
     height: 100%;
-    .el-table /deep/ .el-table__body-wrapper table thead {
+    .el-table ::v-deep .el-table__body-wrapper table thead {
         display: none;
     }
     @media print {
-        .el-table /deep/ .el-table__body-wrapper table thead {
+        .el-table ::v-deep .el-table__body-wrapper table thead {
             display: table-header-group;
         }
-        .el-table /deep/ .el-table__header-wrapper {
+        .el-table ::v-deep .el-table__header-wrapper {
             display: none;
         }
     }
