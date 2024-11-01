@@ -21,7 +21,7 @@ module.exports = {
             "warn",
             {
                 require: {
-                    FunctionDeclaration: true
+                    FunctionDeclaration: false
                 }
             }
         ]
